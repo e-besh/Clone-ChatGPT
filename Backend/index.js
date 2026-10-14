@@ -6,12 +6,10 @@ import { errorHandler } from "./src/middleware/error-handler.js";
 import cors from "cors";
 
 const app = express();
-
+CONST PORT=4000;
 // allow request from frontend port
 app.use(
-  cors({
-    origin: "http://localhost:5173",
-  }),
+  cors(),
 );
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -28,7 +26,7 @@ async function startServer() {
     console.log("Connected to the database successfully!");
     connection.release(); // Release the connection back to the pool
 
-    app.listen(4000, (err) => {
+    app.listen(PORT, (err) => {
       if (err) {
         throw err;
       }
